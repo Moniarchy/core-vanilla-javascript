@@ -14,8 +14,7 @@ BinarySearch.prototype.indexOf = function( value, myArray=this.arr ) {
   if ( value === myArray[midpoint] ) {
     return myArray[midpoint]
   } else if ( value < myArray[midpoint] ) {
-    myArray = myArray.slice( 0, midpoint-1   )
-    debugger
+    myArray = myArray.slice( 0, midpoint-1 )
     return this.indexOf( value, myArray )
   } else {
     myArray = myArray.slice( midpoint+1, myArray.length - midpoint )
