@@ -11,7 +11,6 @@ Anagram.prototype.matches = function( ...input ) {
   this.hashLetterCount()
 
   for( let word of input ) {
-    console.log('word', word)
     if( this.isAnagram( word )) {
       foundAnagrams.push(word)
     }
@@ -39,7 +38,6 @@ Anagram.prototype.isAnagram = function( word ) {
     return false
   }
   for( let letter of word ) {
-    console.log('word', word)
     if( this.letterHash[letter] === undefined ) {
       return false
     } else {
