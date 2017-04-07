@@ -24,56 +24,80 @@ LinkedList.prototype.push = function( data ) {
 }
 
 LinkedList.prototype.pop = function() {
-var nodeToBePopped = this.top.data
+  var nodeToBePopped = this.top.data
 
-if ( this.length > 1 ) {
-     this.top = this.top.prev
+  this.top = this.top.prev
+  if ( this.length > 1 ) {
      this.top.next = null
-     this.length--
-     return nodeToBePopped
-   } else if ( this.length === 1 ) {
-     this.top = null
-     this.length--
-     return nodeToBePopped
-   }
+  }
+   this.length--
+   return nodeToBePopped
 }
 
 LinkedList.prototype.shift = function() {
-  var nodeToBeShifted
   var temp = this.top
 
   while ( temp.prev ) {
     temp = temp.prev
+  }
 
-    if ( temp.prev === null ) {
-      nodeToBeShifted = temp.data
-      console.log('temp', nodeToBeShifted)
-      // temp = temp.next
-      this.length--
-      return nodeToBeShifted
-    }
-    }
-  //start at top
-  //go through list and access prev until we find the node where prev === null
-  //set that node's next to have a prev of null
-  //return that node that was removed
+  var nodeToBeShifted = temp
+  temp = nodeToBeShifted.next
+  if ( this.length > 1 ) {
+    temp.prev = null
+  }
+  this.length--
+  return nodeToBeShifted.data
 }
 
-LinkedList.prototype.unshift = function() {
+LinkedList.prototype.unshift = function( data ) {
+  var newNode = new Node( data )
+  var temp = this.top
 
-}
+  if ( this.top === null ) {
+    this.top = newNode
+    this.length++
+  } else if ( this.length === 1 ) {
+    temp.prev = newNode
+    newNode.next = temp
+    this.length++
+  } else {
+    while ( temp.prev ) {
+      temp = temp.prev
+    }
+      newNode.next = temp
+      temp.prev = newNode
+      this.length++
+    }
+  }
 
 LinkedList.prototype.count = function() {
   return this.length
 }
 
+LinkedList.prototype.delete = function( data ) {
+  var temp = this.top
+
+  while ( temp.prev && temp.data !== data ) {
+    temp = temp.prev
+    console.log('temp.prev', temp)
+  }
+
+
+  //loop through until we find the node whose data matches the data from the parameter
+  //set its prev to its next
+  //set its next to its prev
+}
+
 module.exports = LinkedList
 
 var chain = new LinkedList
+//
+chain.unshift(6)
+chain.unshift(9)
+chain.unshift(12)
+chain.unshift(15)
+chain.delete(9)
 
-chain.push(6)
-chain.push(9)
-chain.push(12)
-chain.push(15)
-
-console.log( chain.shift())
+// console.log( 'LIIIIIIIIST', chain )
+// console.log('YOOOOOO', chain.top.prev.prev)
