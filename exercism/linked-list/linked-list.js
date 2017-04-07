@@ -11,6 +11,8 @@ function LinkedList() {
 
 LinkedList.prototype.push = function( value ) {
   var node = new Node( value )
+
+
   //if this node is the first thing in the list
     //add it to the list,
     //increase the length  of list by one
@@ -33,6 +35,10 @@ LinkedList.prototype.shift = function() {
 
 LinkedList.prototype.unshift = function() {
 
+}
+
+LinkedList.prototype.count = function() {
+  return this.length
 }
 
 module.exports = LinkedList
