@@ -1,5 +1,5 @@
-function Node( value ) {
-  this.value = value
+function Node( data ) {
+  this.data = data
   this.next = null
   this.prev = null
 }
@@ -9,8 +9,8 @@ function LinkedList() {
   this.length = 0
 }
 
-LinkedList.prototype.push = function( value ) {
-  var newNode = new Node( value )
+LinkedList.prototype.push = function( data ) {
+  var newNode = new Node( data )
 
   if ( this.length === 0 ) {
     this.top = newNode
@@ -24,10 +24,18 @@ LinkedList.prototype.push = function( value ) {
 }
 
 LinkedList.prototype.pop = function() {
-//var nodeToBePopped = this.top.data
-    //  this.top = this.top.next
-    //  this.size--
-    //  return nodeToBePopped
+var nodeToBePopped = this.top.data
+
+if ( this.length > 1 ) {
+     this.top = this.top.prev
+     this.top.next = null
+     this.length--
+     return nodeToBePopped
+   } else if ( this.length === 1 ) {
+     this.top = null
+     this.length--
+     return nodeToBePopped
+   }
 }
 
 LinkedList.prototype.shift = function() {
