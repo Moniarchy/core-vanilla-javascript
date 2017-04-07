@@ -10,23 +10,24 @@ function LinkedList() {
 }
 
 LinkedList.prototype.push = function( value ) {
-  var node = new Node( value )
+  var newNode = new Node( value )
 
-
-  //if this node is the first thing in the list
-    //add it to the list,
-    //increase the length  of list by one
-    //do not change this.prev or this.next
-  //if node is not first node in list
-    //update this.next pointer of prev node to point to new node
-    //insert new node
-    //increase length of list by one
-    //change this.prev to point to previous node
-
+  if ( this.length === 0 ) {
+    this.top = newNode
+    this.length++
+  } else if ( this.length > 0 ) {
+    this.top.next = newNode
+    newNode.prev = this.top
+    this.top = newNode
+    this.length++
+  }
 }
 
 LinkedList.prototype.pop = function() {
-
+//var nodeToBePopped = this.top.data
+    //  this.top = this.top.next
+    //  this.size--
+    //  return nodeToBePopped
 }
 
 LinkedList.prototype.shift = function() {
@@ -42,3 +43,7 @@ LinkedList.prototype.count = function() {
 }
 
 module.exports = LinkedList
+
+var chain = new LinkedList
+
+console.log(chain.push(5))
