@@ -1,35 +1,29 @@
 function BinarySearch( arr ) {
-//an object taht has a state and the reason it can change is because it has some
-//data it's holding onto and some functions that can act on that data.
-//that means there's a state change
   this.arr = arr
 }
 
-BinarySearch.prototype.indexOf = function( value ) {
-  //check if this.arr is sorted
-  //
-
-  // on the prototoype of bin search we're gonna have a method called index of
-
-}
-
-  java
-
-    var checkIfArrayIsSorted = function(arr) {
-      for(var i = 0; i < arr.length; i ++) {
-        if (arr[i] < arr[i+1]) {
-            return true;
-        } else {
-            return false;
-        }
+BinarySearch.prototype.indexOf = function( value, myArray=this.arr ) {
+  // check to see if array is sorted
+  for(var i = 0; i < myArray.length; i++) {
+    if (myArray[i] > myArray[i+1]) {
+      return 'UNSORTED ARRAY'
     }
   }
 
-c++
+  var midpoint = Math.floor((myArray.length - 1) / 2)
+  if ( value === myArray[midpoint] ) {
+    return myArray[midpoint]
+  } else if ( value < myArray[midpoint] ) {
+    myArray = myArray.slice( 0, midpoint-1 )
+    return this.indexOf( value, myArray )
+  } else {
+    myArray = myArray.slice( midpoint+1, myArray.length - midpoint )
+    return this.indexOf( value, myArray )
+  }
+}
 
+var sortedArray = [1, 2, 3, 4, 5, 6];
 
-    for(var i = 0; i < thing.length; i++) {
-            if (thing[i] > thing[i+1]) {
-                console.log('false');
-            }
-        }
+var newthing = new BinarySearch(sortedArray)
+
+console.log( newthing.indexOf(5))
