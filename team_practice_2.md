@@ -13,15 +13,15 @@ Exercism provides a number of practice problems along with unit tests to ensure 
 ### Day 1 - Exercism
 
 - [X] Solve `/exercism/binary-search`
-- [ ] Solve `/exercism/pangram`
-- [ ] Solve `/exercism/anagram`
+- [X] Solve `/exercism/pangram`
+- [X] Solve `/exercism/anagram`
 - [ ] Solve `/exercism/food-chain`
 
 ### Day 2 - Exercism
 
-- [ ] Solve `/exercism/robot-name`
-- [ ] Solve `/exercism/etl`
-- [ ] Solve `/exercism/linked-list`
+- [ ] Solve `/exercism/robot-name` (not close to done, but has some work in the file)
+- [X] Solve `/exercism/etl`
+- [ ] Solve `/exercism/linked-list` (most of the way done, not quite finished)
 - [ ] Solve `/exercism/triangle`
 
 ### Day 3 - Exercism
